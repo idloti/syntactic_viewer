@@ -19,6 +19,10 @@ export const FE = {
   DTH: 25,
   START: -50,
   VISIBLE: 63,
+  // 語頭（focus=ε）の縦一列（spec §5.2・§7-4）。文字盤とは別の座標系。
+  COL_X: 58,
+  COL_TOP: 62,
+  COL_ROW: 52,
 };
 
 export function baseRadius(count) {
@@ -33,23 +37,60 @@ export function baseRadius(count) {
  * @param {{w:number,h:number}} dims
  * @param {(a:string,b:string)=>number} atomCompare
  * @param {Map<string,string[]>} atomsByWord kimariji子の残り原子表示に使う
- * @returns {{T: Map<string, object>, fanMeta: {above:number, below:number, rotMin:number, rotMax:number}|null}}
+ * @returns {{T: Map<string, object>, fanMeta: {above:number, below:number, rotMin:number, rotMax:number}|null, columnHeight: number|null}}
+ *   columnHeight: 語頭（縦一列）モードのときだけ非null。スクロール領域の高さの目安。
  */
 export function computeTargets(root, focusAtoms, rot, dims, atomCompare, atomsByWord) {
   const T = new Map();
   const put = (atoms, t) => T.set(pathKey(atoms), t);
-  const ax = Math.min(dims.w * 0.34, 150);
-  const ay = dims.h * 0.44;
-  const { S_TRAIL, STEP, GAP, R_FAN, FOCUS_R, DTH, START, VISIBLE } = FE;
+  const { S_TRAIL, STEP, GAP, R_FAN, FOCUS_R, DTH, START, VISIBLE, COL_X, COL_TOP, COL_ROW } = FE;
 
   const focusNode = nodeAt(root, focusAtoms);
-  if (!focusNode) return { T, fanMeta: null };
+  if (!focusNode) return { T, fanMeta: null, columnHeight: null };
+
+  // --- 語頭（focus=ε）：文字盤ではなく縦一列、頻度順に上から（spec §5.2・§7-4）---
+  if (focusAtoms.length === 0) {
+    put(focusAtoms, {
+      atoms: focusAtoms,
+      x: COL_X,
+      y: 16,
+      r: 7,
+      kind: "focus",
+      atom: focusNode.atom,
+      count: focusNode.count,
+      alpha: 1,
+    });
+
+    const kids = sortedKids(focusNode, atomCompare);
+    kids.forEach(([a, child], i) => {
+      const cAtoms = [a];
+      const restAtoms = child.count === 1 ? (atomsByWord.get(child.only) || []).slice(1) : null;
+      put(cAtoms, {
+        atoms: cAtoms,
+        x: COL_X,
+        y: COL_TOP + i * COL_ROW,
+        r: baseRadius(child.count),
+        kind: child.count === 1 ? "kimariji" : "child",
+        atom: a,
+        count: child.count,
+        only: child.only,
+        restAtoms,
+        alpha: 1,
+      });
+    });
+
+    const columnHeight = COL_TOP + Math.max(0, kids.length - 1) * COL_ROW + 60;
+    return { T, fanMeta: null, columnHeight };
+  }
+
+  const ax = Math.min(dims.w * 0.34, 150);
+  const ay = dims.h * 0.44;
 
   put(focusAtoms, {
     atoms: focusAtoms,
     x: ax,
     y: ay,
-    r: focusAtoms.length === 0 ? 11 : FOCUS_R,
+    r: FOCUS_R,
     kind: "focus",
     atom: focusNode.atom,
     count: focusNode.count,
@@ -142,5 +183,5 @@ export function computeTargets(root, focusAtoms, rot, dims, atomCompare, atomsBy
   const fanMeta =
     above + below > 0 || rotMin < 0 ? { above, below, rotMin, rotMax: 0 } : null;
 
-  return { T, fanMeta };
+  return { T, fanMeta, columnHeight: null };
 }
