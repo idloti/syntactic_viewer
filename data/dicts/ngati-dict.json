@@ -1,0 +1,25 @@
+{
+ "meta": {
+  "id": "ngati-dict",
+  "version": 1,
+  "name": "ンガティ語辞書",
+  "author": "idroty",
+  "_note": "母音調和による異形態（di/du, set/sot）を1つのmorphのformsに束ねる。英語のcon/com/cor/coと完全に同じ仕組みで表現できる＝辞書形式がΣに依存しないことの実証。完全重複（kelkel）は専用morphを持たない：同じmorphがsegに2回現れることが形態論そのもの。"
+ },
+ "morphs": [
+  { "id": "kel", "kind": "root", "forms": ["kel"], "gloss": "見る" },
+  { "id": "ngat", "kind": "root", "forms": ["ngat"], "gloss": "話す" },
+  { "id": "chal", "kind": "root", "forms": ["chal"], "gloss": "行く" },
+  { "id": "tsum", "kind": "root", "forms": ["tsum"], "gloss": "食べる" },
+  { "id": "tsim", "kind": "root", "forms": ["tsim"], "gloss": "飲む" },
+  { "id": "mel", "kind": "root", "forms": ["mel"], "gloss": "眠る" },
+  { "id": "anga", "kind": "root", "forms": ["anga"], "gloss": "君（二人称）" },
+  { "id": "na", "kind": "root", "forms": ["na"], "gloss": "火" },
+  { "id": "na-high", "kind": "root", "forms": ["ná"], "gloss": "月（高声調）" },
+
+  { "id": "mu", "kind": "prefix", "forms": ["mu"], "gloss": "否定" },
+
+  { "id": "past", "kind": "suffix", "forms": ["di", "du"], "gloss": "過去（母音調和：前舌語幹にdi／後舌語幹にdu）" },
+  { "id": "caus", "kind": "suffix", "forms": ["set", "sot"], "gloss": "使役（母音調和：set／sot）" }
+ ]
+}

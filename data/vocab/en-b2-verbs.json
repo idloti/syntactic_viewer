@@ -1,0 +1,1172 @@
+{
+ "manifest": {
+  "format": 2,
+  "name": "英動詞B2",
+  "tokenizer": "grapheme",
+  "collation": "en",
+  "dictionaries": [
+   "std-en-latin@1"
+  ],
+  "_note": "seed語彙。segは表層分割（連結すると必ずwに一致）。standは意図的にsegなし。"
+ },
+ "entries": [
+  {
+  "id": "0001",
+   "w": "extract",
+   "g": "抽出する",
+   "seg": [
+    "ex",
+    "tract"
+   ]
+  },
+  {
+  "id": "0002",
+   "w": "expect",
+   "g": "予期する",
+   "seg": [
+    "ex",
+    "pect"
+   ]
+  },
+  {
+  "id": "0003",
+   "w": "expose",
+   "g": "さらす",
+   "seg": [
+    "ex",
+    "pose"
+   ]
+  },
+  {
+  "id": "0004",
+   "w": "express",
+   "g": "表現する",
+   "seg": [
+    "ex",
+    "press"
+   ]
+  },
+  {
+  "id": "0005",
+   "w": "exclude",
+   "g": "除外する",
+   "seg": [
+    "ex",
+    "clude"
+   ]
+  },
+  {
+  "id": "0006",
+   "w": "extend",
+   "g": "伸ばす",
+   "seg": [
+    "ex",
+    "tend"
+   ]
+  },
+  {
+  "id": "0007",
+   "w": "expand",
+   "g": "拡大する",
+   "seg": [
+    "ex",
+    "pand"
+   ]
+  },
+  {
+  "id": "0008",
+   "w": "explore",
+   "g": "探検する",
+   "seg": [
+    "ex",
+    "plore"
+   ]
+  },
+  {
+  "id": "0009",
+   "w": "explode",
+   "g": "爆発する",
+   "seg": [
+    "ex",
+    "plode"
+   ]
+  },
+  {
+  "id": "0010",
+   "w": "explain",
+   "g": "説明する",
+   "seg": [
+    "ex",
+    "plain"
+   ]
+  },
+  {
+  "id": "0011",
+   "w": "exist",
+   "g": "存在する",
+   "seg": [
+    "ex",
+    "ist"
+   ]
+  },
+  {
+  "id": "0012",
+   "w": "exceed",
+   "g": "超える",
+   "seg": [
+    "ex",
+    "ceed"
+   ]
+  },
+  {
+  "id": "0013",
+   "w": "expire",
+   "g": "期限が切れる",
+   "seg": [
+    "ex",
+    "pire"
+   ]
+  },
+  {
+  "id": "0014",
+   "w": "export",
+   "g": "輸出する",
+   "seg": [
+    "ex",
+    "port"
+   ]
+  },
+  {
+  "id": "0015",
+   "w": "emit",
+   "g": "放出する",
+   "seg": [
+    "e",
+    "mit"
+   ]
+  },
+  {
+  "id": "0016",
+   "w": "evolve",
+   "g": "進化する",
+   "seg": [
+    "e",
+    "volve"
+   ]
+  },
+  {
+  "id": "0017",
+   "w": "erupt",
+   "g": "噴火する",
+   "seg": [
+    "e",
+    "rupt"
+   ]
+  },
+  {
+  "id": "0018",
+   "w": "contract",
+   "g": "契約する・縮む",
+   "seg": [
+    "con",
+    "tract"
+   ]
+  },
+  {
+  "id": "0019",
+   "w": "contain",
+   "g": "含む",
+   "seg": [
+    "con",
+    "tain"
+   ]
+  },
+  {
+  "id": "0020",
+   "w": "conclude",
+   "g": "結論づける",
+   "seg": [
+    "con",
+    "clude"
+   ]
+  },
+  {
+  "id": "0021",
+   "w": "construct",
+   "g": "建設する",
+   "seg": [
+    "con",
+    "struct"
+   ]
+  },
+  {
+  "id": "0022",
+   "w": "convert",
+   "g": "転換する",
+   "seg": [
+    "con",
+    "vert"
+   ]
+  },
+  {
+  "id": "0023",
+   "w": "conduct",
+   "g": "実施する",
+   "seg": [
+    "con",
+    "duct"
+   ]
+  },
+  {
+  "id": "0024",
+   "w": "consist",
+   "g": "成り立つ",
+   "seg": [
+    "con",
+    "sist"
+   ]
+  },
+  {
+  "id": "0025",
+   "w": "consume",
+   "g": "消費する",
+   "seg": [
+    "con",
+    "sume"
+   ]
+  },
+  {
+  "id": "0026",
+   "w": "contribute",
+   "g": "貢献する",
+   "seg": [
+    "con",
+    "tribute"
+   ]
+  },
+  {
+  "id": "0027",
+   "w": "conform",
+   "g": "従う",
+   "seg": [
+    "con",
+    "form"
+   ]
+  },
+  {
+  "id": "0028",
+   "w": "conserve",
+   "g": "保存する",
+   "seg": [
+    "con",
+    "serve"
+   ]
+  },
+  {
+  "id": "0029",
+   "w": "connect",
+   "g": "つなぐ",
+   "seg": [
+    "con",
+    "nect"
+   ]
+  },
+  {
+  "id": "0030",
+   "w": "compose",
+   "g": "構成する",
+   "seg": [
+    "com",
+    "pose"
+   ]
+  },
+  {
+  "id": "0031",
+   "w": "commit",
+   "g": "委ねる・犯す",
+   "seg": [
+    "com",
+    "mit"
+   ]
+  },
+  {
+  "id": "0032",
+   "w": "compare",
+   "g": "比べる",
+   "seg": [
+    "com",
+    "pare"
+   ]
+  },
+  {
+  "id": "0033",
+   "w": "complain",
+   "g": "不平を言う",
+   "seg": [
+    "com",
+    "plain"
+   ]
+  },
+  {
+  "id": "0034",
+   "w": "compress",
+   "g": "圧縮する",
+   "seg": [
+    "com",
+    "press"
+   ]
+  },
+  {
+  "id": "0035",
+   "w": "correspond",
+   "g": "一致する",
+   "seg": [
+    "cor",
+    "re",
+    "spond"
+   ]
+  },
+  {
+  "id": "0036",
+   "w": "corrupt",
+   "g": "堕落させる",
+   "seg": [
+    "cor",
+    "rupt"
+   ]
+  },
+  {
+  "id": "0037",
+   "w": "include",
+   "g": "含める",
+   "seg": [
+    "in",
+    "clude"
+   ]
+  },
+  {
+  "id": "0038",
+   "w": "inspect",
+   "g": "検査する",
+   "seg": [
+    "in",
+    "spect"
+   ]
+  },
+  {
+  "id": "0039",
+   "w": "instruct",
+   "g": "指導する",
+   "seg": [
+    "in",
+    "struct"
+   ]
+  },
+  {
+  "id": "0040",
+   "w": "inject",
+   "g": "注入する",
+   "seg": [
+    "in",
+    "ject"
+   ]
+  },
+  {
+  "id": "0041",
+   "w": "insist",
+   "g": "主張する",
+   "seg": [
+    "in",
+    "sist"
+   ]
+  },
+  {
+  "id": "0042",
+   "w": "inspire",
+   "g": "鼓舞する",
+   "seg": [
+    "in",
+    "spire"
+   ]
+  },
+  {
+  "id": "0043",
+   "w": "intend",
+   "g": "意図する",
+   "seg": [
+    "in",
+    "tend"
+   ]
+  },
+  {
+  "id": "0044",
+   "w": "invent",
+   "g": "発明する",
+   "seg": [
+    "in",
+    "vent"
+   ]
+  },
+  {
+  "id": "0045",
+   "w": "involve",
+   "g": "巻き込む",
+   "seg": [
+    "in",
+    "volve"
+   ]
+  },
+  {
+  "id": "0046",
+   "w": "inform",
+   "g": "知らせる",
+   "seg": [
+    "in",
+    "form"
+   ]
+  },
+  {
+  "id": "0047",
+   "w": "inquire",
+   "g": "尋ねる",
+   "seg": [
+    "in",
+    "quire"
+   ]
+  },
+  {
+  "id": "0048",
+   "w": "impose",
+   "g": "課す",
+   "seg": [
+    "im",
+    "pose"
+   ]
+  },
+  {
+  "id": "0049",
+   "w": "impress",
+   "g": "印象づける",
+   "seg": [
+    "im",
+    "press"
+   ]
+  },
+  {
+  "id": "0050",
+   "w": "import",
+   "g": "輸入する",
+   "seg": [
+    "im",
+    "port"
+   ]
+  },
+  {
+  "id": "0051",
+   "w": "improve",
+   "g": "改善する",
+   "seg": [
+    "im",
+    "prove"
+   ]
+  },
+  {
+  "id": "0052",
+   "w": "reject",
+   "g": "拒む",
+   "seg": [
+    "re",
+    "ject"
+   ]
+  },
+  {
+  "id": "0053",
+   "w": "receive",
+   "g": "受け取る",
+   "seg": [
+    "re",
+    "ceive"
+   ]
+  },
+  {
+  "id": "0054",
+   "w": "reduce",
+   "g": "減らす",
+   "seg": [
+    "re",
+    "duce"
+   ]
+  },
+  {
+  "id": "0055",
+   "w": "refer",
+   "g": "言及する",
+   "seg": [
+    "re",
+    "fer"
+   ]
+  },
+  {
+  "id": "0056",
+   "w": "resist",
+   "g": "抵抗する",
+   "seg": [
+    "re",
+    "sist"
+   ]
+  },
+  {
+  "id": "0057",
+   "w": "retain",
+   "g": "保持する",
+   "seg": [
+    "re",
+    "tain"
+   ]
+  },
+  {
+  "id": "0058",
+   "w": "respond",
+   "g": "応じる",
+   "seg": [
+    "re",
+    "spond"
+   ]
+  },
+  {
+  "id": "0059",
+   "w": "respect",
+   "g": "尊敬する",
+   "seg": [
+    "re",
+    "spect"
+   ]
+  },
+  {
+  "id": "0060",
+   "w": "report",
+   "g": "報告する",
+   "seg": [
+    "re",
+    "port"
+   ]
+  },
+  {
+  "id": "0061",
+   "w": "require",
+   "g": "要求する",
+   "seg": [
+    "re",
+    "quire"
+   ]
+  },
+  {
+  "id": "0062",
+   "w": "resume",
+   "g": "再開する",
+   "seg": [
+    "re",
+    "sume"
+   ]
+  },
+  {
+  "id": "0063",
+   "w": "reserve",
+   "g": "予約する",
+   "seg": [
+    "re",
+    "serve"
+   ]
+  },
+  {
+  "id": "0064",
+   "w": "resolve",
+   "g": "解決する",
+   "seg": [
+    "re",
+    "solve"
+   ]
+  },
+  {
+  "id": "0065",
+   "w": "revive",
+   "g": "復活させる",
+   "seg": [
+    "re",
+    "vive"
+   ]
+  },
+  {
+  "id": "0066",
+   "w": "revolve",
+   "g": "回転する",
+   "seg": [
+    "re",
+    "volve"
+   ]
+  },
+  {
+  "id": "0067",
+   "w": "remove",
+   "g": "取り除く",
+   "seg": [
+    "re",
+    "move"
+   ]
+  },
+  {
+  "id": "0068",
+   "w": "describe",
+   "g": "描写する",
+   "seg": [
+    "de",
+    "scribe"
+   ]
+  },
+  {
+  "id": "0069",
+   "w": "deceive",
+   "g": "だます",
+   "seg": [
+    "de",
+    "ceive"
+   ]
+  },
+  {
+  "id": "0070",
+   "w": "depress",
+   "g": "落ち込ませる",
+   "seg": [
+    "de",
+    "press"
+   ]
+  },
+  {
+  "id": "0071",
+   "w": "deserve",
+   "g": "値する",
+   "seg": [
+    "de",
+    "serve"
+   ]
+  },
+  {
+  "id": "0072",
+   "w": "detach",
+   "g": "切り離す",
+   "seg": [
+    "de",
+    "tach"
+   ]
+  },
+  {
+  "id": "0073",
+   "w": "deduct",
+   "g": "差し引く",
+   "seg": [
+    "de",
+    "duct"
+   ]
+  },
+  {
+  "id": "0074",
+   "w": "distract",
+   "g": "気を散らす",
+   "seg": [
+    "dis",
+    "tract"
+   ]
+  },
+  {
+  "id": "0075",
+   "w": "dissolve",
+   "g": "溶かす",
+   "seg": [
+    "dis",
+    "solve"
+   ]
+  },
+  {
+  "id": "0076",
+   "w": "distribute",
+   "g": "分配する",
+   "seg": [
+    "dis",
+    "tribute"
+   ]
+  },
+  {
+  "id": "0077",
+   "w": "dispose",
+   "g": "処分する",
+   "seg": [
+    "dis",
+    "pose"
+   ]
+  },
+  {
+  "id": "0078",
+   "w": "digest",
+   "g": "消化する",
+   "seg": [
+    "di",
+    "gest"
+   ]
+  },
+  {
+  "id": "0079",
+   "w": "subtract",
+   "g": "引く",
+   "seg": [
+    "sub",
+    "tract"
+   ]
+  },
+  {
+  "id": "0080",
+   "w": "submit",
+   "g": "提出する",
+   "seg": [
+    "sub",
+    "mit"
+   ]
+  },
+  {
+  "id": "0081",
+   "w": "subscribe",
+   "g": "定期購読する",
+   "seg": [
+    "sub",
+    "scribe"
+   ]
+  },
+  {
+  "id": "0082",
+   "w": "sustain",
+   "g": "持続させる",
+   "seg": [
+    "sus",
+    "tain"
+   ]
+  },
+  {
+  "id": "0083",
+   "w": "suspect",
+   "g": "疑う",
+   "seg": [
+    "sus",
+    "pect"
+   ]
+  },
+  {
+  "id": "0084",
+   "w": "support",
+   "g": "支える",
+   "seg": [
+    "sup",
+    "port"
+   ]
+  },
+  {
+  "id": "0085",
+   "w": "suppose",
+   "g": "仮定する",
+   "seg": [
+    "sup",
+    "pose"
+   ]
+  },
+  {
+  "id": "0086",
+   "w": "suppress",
+   "g": "抑える",
+   "seg": [
+    "sup",
+    "press"
+   ]
+  },
+  {
+  "id": "0087",
+   "w": "succeed",
+   "g": "成功する・続く",
+   "seg": [
+    "suc",
+    "ceed"
+   ]
+  },
+  {
+  "id": "0088",
+   "w": "suggest",
+   "g": "提案する",
+   "seg": [
+    "sug",
+    "gest"
+   ]
+  },
+  {
+  "id": "0089",
+   "w": "survive",
+   "g": "生き残る",
+   "seg": [
+    "sur",
+    "vive"
+   ]
+  },
+  {
+  "id": "0090",
+   "w": "transport",
+   "g": "輸送する",
+   "seg": [
+    "trans",
+    "port"
+   ]
+  },
+  {
+  "id": "0091",
+   "w": "transform",
+   "g": "変換する",
+   "seg": [
+    "trans",
+    "form"
+   ]
+  },
+  {
+  "id": "0092",
+   "w": "transfer",
+   "g": "移す",
+   "seg": [
+    "trans",
+    "fer"
+   ]
+  },
+  {
+  "id": "0093",
+   "w": "transmit",
+   "g": "伝送する",
+   "seg": [
+    "trans",
+    "mit"
+   ]
+  },
+  {
+  "id": "0094",
+   "w": "prevent",
+   "g": "防ぐ",
+   "seg": [
+    "pre",
+    "vent"
+   ]
+  },
+  {
+  "id": "0095",
+   "w": "prepare",
+   "g": "準備する",
+   "seg": [
+    "pre",
+    "pare"
+   ]
+  },
+  {
+  "id": "0096",
+   "w": "prescribe",
+   "g": "処方する",
+   "seg": [
+    "pre",
+    "scribe"
+   ]
+  },
+  {
+  "id": "0097",
+   "w": "pretend",
+   "g": "ふりをする",
+   "seg": [
+    "pre",
+    "tend"
+   ]
+  },
+  {
+  "id": "0098",
+   "w": "prefer",
+   "g": "好む",
+   "seg": [
+    "pre",
+    "fer"
+   ]
+  },
+  {
+  "id": "0099",
+   "w": "preserve",
+   "g": "保存する",
+   "seg": [
+    "pre",
+    "serve"
+   ]
+  },
+  {
+  "id": "0100",
+   "w": "produce",
+   "g": "生産する",
+   "seg": [
+    "pro",
+    "duce"
+   ]
+  },
+  {
+  "id": "0101",
+   "w": "propose",
+   "g": "提案する",
+   "seg": [
+    "pro",
+    "pose"
+   ]
+  },
+  {
+  "id": "0102",
+   "w": "project",
+   "g": "投影する・計画する",
+   "seg": [
+    "pro",
+    "ject"
+   ]
+  },
+  {
+  "id": "0103",
+   "w": "proceed",
+   "g": "進む",
+   "seg": [
+    "pro",
+    "ceed"
+   ]
+  },
+  {
+  "id": "0104",
+   "w": "pronounce",
+   "g": "発音する",
+   "seg": [
+    "pro",
+    "nounce"
+   ]
+  },
+  {
+  "id": "0105",
+   "w": "protect",
+   "g": "守る",
+   "seg": [
+    "pro",
+    "tect"
+   ]
+  },
+  {
+  "id": "0106",
+   "w": "object",
+   "g": "反対する",
+   "seg": [
+    "ob",
+    "ject"
+   ]
+  },
+  {
+  "id": "0107",
+   "w": "observe",
+   "g": "観察する",
+   "seg": [
+    "ob",
+    "serve"
+   ]
+  },
+  {
+  "id": "0108",
+   "w": "obtain",
+   "g": "得る",
+   "seg": [
+    "ob",
+    "tain"
+   ]
+  },
+  {
+  "id": "0109",
+   "w": "oppose",
+   "g": "反対する",
+   "seg": [
+    "op",
+    "pose"
+   ]
+  },
+  {
+  "id": "0110",
+   "w": "omit",
+   "g": "省く",
+   "seg": [
+    "o",
+    "mit"
+   ]
+  },
+  {
+  "id": "0111",
+   "w": "admit",
+   "g": "認める",
+   "seg": [
+    "ad",
+    "mit"
+   ]
+  },
+  {
+  "id": "0112",
+   "w": "attract",
+   "g": "引きつける",
+   "seg": [
+    "at",
+    "tract"
+   ]
+  },
+  {
+  "id": "0113",
+   "w": "attend",
+   "g": "出席する",
+   "seg": [
+    "at",
+    "tend"
+   ]
+  },
+  {
+  "id": "0114",
+   "w": "attach",
+   "g": "付ける",
+   "seg": [
+    "at",
+    "tach"
+   ]
+  },
+  {
+  "id": "0115",
+   "w": "attempt",
+   "g": "試みる",
+   "seg": [
+    "at",
+    "tempt"
+   ]
+  },
+  {
+  "id": "0116",
+   "w": "assist",
+   "g": "手伝う",
+   "seg": [
+    "as",
+    "sist"
+   ]
+  },
+  {
+  "id": "0117",
+   "w": "assume",
+   "g": "仮定する",
+   "seg": [
+    "as",
+    "sume"
+   ]
+  },
+  {
+  "id": "0118",
+   "w": "announce",
+   "g": "発表する",
+   "seg": [
+    "an",
+    "nounce"
+   ]
+  },
+  {
+  "id": "0119",
+   "w": "acquire",
+   "g": "獲得する",
+   "seg": [
+    "ac",
+    "quire"
+   ]
+  },
+  {
+  "id": "0120",
+   "w": "approve",
+   "g": "承認する",
+   "seg": [
+    "ap",
+    "prove"
+   ]
+  },
+  {
+  "id": "0121",
+   "w": "perceive",
+   "g": "知覚する",
+   "seg": [
+    "per",
+    "ceive"
+   ]
+  },
+  {
+  "id": "0122",
+   "w": "perform",
+   "g": "遂行する",
+   "seg": [
+    "per",
+    "form"
+   ]
+  },
+  {
+  "id": "0123",
+   "w": "permit",
+   "g": "許可する",
+   "seg": [
+    "per",
+    "mit"
+   ]
+  },
+  {
+  "id": "0124",
+   "w": "persist",
+   "g": "固執する",
+   "seg": [
+    "per",
+    "sist"
+   ]
+  },
+  {
+  "id": "0125",
+   "w": "interrupt",
+   "g": "遮る",
+   "seg": [
+    "inter",
+    "rupt"
+   ]
+  },
+  {
+  "id": "0126",
+   "w": "introduce",
+   "g": "紹介する・導入する",
+   "seg": [
+    "intro",
+    "duce"
+   ]
+  },
+  {
+  "id": "0127",
+   "w": "maintain",
+   "g": "維持する",
+   "seg": [
+    "main",
+    "tain"
+   ]
+  },
+  {
+  "id": "0128",
+   "w": "understand",
+   "g": "理解する",
+   "seg": [
+    "under",
+    "stand"
+   ]
+  },
+  {
+  "id": "0129",
+   "w": "stand",
+   "g": "立つ"
+  }
+ ]
+}

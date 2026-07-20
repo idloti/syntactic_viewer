@@ -1,0 +1,32 @@
+{
+ "manifest": {
+  "format": 2,
+  "name": "ンガティ語（人工言語）",
+  "tokenizer": { "type": "table", "digraphs": ["ng", "ch", "ts"] },
+  "dictionaries": ["ngati-dict@1"],
+  "_note": "設計メモ：(1) 多重字ng/ch/tsは最長一致・貪欲で1原子。tableに無い文字はgrapheme単位にフォールバック。(2) collationは省略＝暫定で符号位置順。tableの並び順を照合順序にする案はspec§9で正式化予定。(3) 正書法上、nの直後のgは常にngと読まれる（n+gという連なりはこの言語では書き分け不能＝設計上の約束）。(4) 形態素境界と原子境界は独立：ngatsot（ngat+sot）は ng|a|ts|o|t と切れ、tsが境界をまたぐ。これはバグではなく再音節化の写しで、segの検証（文字列連結）もトライ（原子列）もそれぞれ正しく動くことの試験になる。"
+ },
+ "entries": [
+  { "id": "c001", "w": "kel", "seg": ["kel"], "g": "見る（前舌語幹）" },
+  { "id": "c002", "w": "keldi", "seg": ["kel", "di"], "g": "見た（過去-di：前舌調和）" },
+  { "id": "c003", "w": "kelsetdi", "seg": ["kel", "set", "di"], "g": "見せた（使役-set＋過去-di、3形態素鎖）" },
+  { "id": "c004", "w": "kelkel", "seg": ["kel", "kel"], "g": "見つめる（完全重複＝反復相。同一形態素がsegに2回現れる試験）" },
+  { "id": "c005", "w": "mukel", "seg": ["mu", "kel"], "g": "見ない（否定接頭辞mu-）" },
+  { "id": "c006", "w": "ngat", "seg": ["ngat"], "g": "話す（後舌語幹・語頭が多重字ng）" },
+  { "id": "c007", "w": "ngatdu", "seg": ["ngat", "du"], "g": "話した（過去-du：後舌調和。diとduが同一形態素の異形態＝con/comの一般化）" },
+  { "id": "c008", "w": "ngatsot", "seg": ["ngat", "sot"], "g": "話させる（原子tsが形態素境界ngat|sotをまたぐ要注意例。manifest注記(4)参照）" },
+  { "id": "c009", "w": "mungatdu", "seg": ["mu", "ngat", "du"], "g": "話さなかった（接頭辞＋語幹＋接尾辞の3層の道）" },
+  { "id": "c010", "w": "chal", "seg": ["chal"], "g": "行く（語頭が多重字ch）" },
+  { "id": "c011", "w": "chaldu", "seg": ["chal", "du"], "g": "行った" },
+  { "id": "c012", "w": "tsum", "seg": ["tsum"], "g": "食べる（語頭が多重字ts）" },
+  { "id": "c013", "w": "tsumdu", "seg": ["tsum", "du"], "g": "食べた" },
+  { "id": "c014", "w": "tsim", "seg": ["tsim"], "g": "飲む（tsumと語頭原子tsを共有→tsの下で分岐する）" },
+  { "id": "c015", "w": "tsimdi", "seg": ["tsim", "di"], "g": "飲んだ（前舌なので-di）" },
+  { "id": "c016", "w": "mel", "seg": ["mel"], "g": "眠る（muと語頭原子mを共有→mの下で分岐）" },
+  { "id": "c017", "w": "meldi", "seg": ["mel", "di"], "g": "眠った" },
+  { "id": "c018", "w": "anga", "seg": ["anga"], "g": "君（語中に多重字：a|ng|a の3原子）" },
+  { "id": "c019", "w": "na", "g": "火（単純語・segなし）" },
+  { "id": "c020", "w": "ná", "g": "月（naと声調で対立する最小対。áはtable外→grapheme 1原子。naの接頭辞にならないこと）" },
+  { "id": "c021", "w": "e", "g": "はい（1原子の語）" }
+ ]
+}

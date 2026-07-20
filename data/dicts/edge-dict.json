@@ -1,0 +1,39 @@
+{
+ "meta": {
+  "id": "edge-dict",
+  "version": 1,
+  "name": "エッジケース辞書",
+  "author": "idroty",
+  "_note": "解決器（resolve）への負荷試験。1つの辞書内での多義、kind欠落、1文字form、未使用morphを含む。エラーを出さず4状態に落ちることが合格条件。"
+ },
+ "morphs": [
+  { "id": "ex", "kind": "prefix", "forms": ["ex"], "gloss": "外へ" },
+  { "id": "in", "kind": "prefix", "forms": ["in"], "gloss": "中へ" },
+  { "id": "mis", "kind": "prefix", "forms": ["mis"], "gloss": "誤って" },
+  { "id": "anti", "kind": "prefix", "forms": ["anti"], "gloss": "反対の" },
+  { "id": "dis", "kind": "prefix", "forms": ["dis"], "gloss": "否定" },
+  { "id": "re", "kind": "prefix", "forms": ["re"], "gloss": "再び" },
+
+  { "id": "co-together", "kind": "prefix", "forms": ["co"], "gloss": "共に", "note": "co-complと同一form。辞書内多義の試験対" },
+  { "id": "co-compl", "kind": "prefix", "forms": ["co"], "gloss": "余・補（complementi）", "note": "cotangent＝余接、cosine＝余弦。『共に』ではない" },
+
+  { "id": "tract", "kind": "root", "forms": ["tract"], "gloss": "引く" },
+  { "id": "extra", "kind": "root", "forms": ["extra"], "gloss": "外の（語まるごと1形態素の例）" },
+  { "id": "form", "kind": "root", "forms": ["form"], "gloss": "形づくる" },
+  { "id": "tangent", "kind": "root", "forms": ["tangent"], "gloss": "触れるもの（接線）" },
+  { "id": "sine", "kind": "root", "forms": ["sine"], "gloss": "弦（sinus）" },
+  { "id": "operate", "kind": "root", "forms": ["operate"], "gloss": "働く" },
+  { "id": "establish", "kind": "root", "forms": ["establish"], "gloss": "据える" },
+  { "id": "enter", "kind": "root", "forms": ["enter"], "gloss": "入る" },
+  { "id": "tend", "kind": "root", "forms": ["tend"], "gloss": "張る・伸ばす" },
+  { "id": "tent", "kind": "root", "forms": ["tent"], "gloss": "張られたもの", "note": "tendの異形態を独立morphにした例（同根別扱いの是非は語彙側の自由）" },
+
+  { "id": "ify", "kind": "suffix", "forms": ["ify"], "gloss": "〜化する" },
+  { "id": "ment", "kind": "suffix", "forms": ["ment"], "gloss": "名詞化（行為・結果）" },
+  { "id": "arian", "kind": "suffix", "forms": ["arian"], "gloss": "〜主義者の" },
+  { "id": "ism", "kind": "suffix", "forms": ["ism"], "gloss": "〜主義" },
+
+  { "id": "up", "forms": ["up"], "gloss": "【kind欠落】層の割り当てが未定のmorph。セマンティックビューでの置き場の扱いを試す" },
+  { "id": "unused", "kind": "root", "forms": ["qqq"], "gloss": "【未使用morph】どの語からも参照されない。辞書一覧には出るが網には孤立ノードとして出さない（または灰色で出す）判断の試験" }
+ ]
+}

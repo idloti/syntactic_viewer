@@ -1,0 +1,531 @@
+{
+ "meta": {
+  "id": "std-en-latin",
+  "version": 1,
+  "name": "英ラテン標準",
+  "author": "idroty",
+  "_note": "formsは語彙①に現れた表層形から機械的に収集。cept/script等の未出現異形態は将来追加。"
+ },
+ "morphs": [
+  {
+   "id": "ex",
+   "kind": "prefix",
+   "forms": [
+    "ex",
+    "e"
+   ],
+   "gloss": "外へ"
+  },
+  {
+   "id": "con",
+   "kind": "prefix",
+   "forms": [
+    "con",
+    "com",
+    "cor",
+    "col",
+    "co"
+   ],
+   "gloss": "共に"
+  },
+  {
+   "id": "in",
+   "kind": "prefix",
+   "forms": [
+    "in",
+    "im"
+   ],
+   "gloss": "中へ・〜に"
+  },
+  {
+   "id": "re",
+   "kind": "prefix",
+   "forms": [
+    "re"
+   ],
+   "gloss": "再び・後ろへ"
+  },
+  {
+   "id": "de",
+   "kind": "prefix",
+   "forms": [
+    "de"
+   ],
+   "gloss": "下へ・離れて"
+  },
+  {
+   "id": "dis",
+   "kind": "prefix",
+   "forms": [
+    "dis",
+    "di"
+   ],
+   "gloss": "離れて・否定"
+  },
+  {
+   "id": "sub",
+   "kind": "prefix",
+   "forms": [
+    "sub",
+    "sus",
+    "sup",
+    "suc",
+    "sug"
+   ],
+   "gloss": "下に"
+  },
+  {
+   "id": "sur",
+   "kind": "prefix",
+   "forms": [
+    "sur"
+   ],
+   "gloss": "超えて（super）"
+  },
+  {
+   "id": "trans",
+   "kind": "prefix",
+   "forms": [
+    "trans"
+   ],
+   "gloss": "越えて"
+  },
+  {
+   "id": "pre",
+   "kind": "prefix",
+   "forms": [
+    "pre"
+   ],
+   "gloss": "前もって"
+  },
+  {
+   "id": "pro",
+   "kind": "prefix",
+   "forms": [
+    "pro"
+   ],
+   "gloss": "前へ"
+  },
+  {
+   "id": "ob",
+   "kind": "prefix",
+   "forms": [
+    "ob",
+    "op",
+    "oc",
+    "o"
+   ],
+   "gloss": "〜に向かって"
+  },
+  {
+   "id": "ad",
+   "kind": "prefix",
+   "forms": [
+    "ad",
+    "at",
+    "as",
+    "an",
+    "ac",
+    "ap",
+    "ar"
+   ],
+   "gloss": "〜の方へ"
+  },
+  {
+   "id": "per",
+   "kind": "prefix",
+   "forms": [
+    "per"
+   ],
+   "gloss": "通して・完全に"
+  },
+  {
+   "id": "inter",
+   "kind": "prefix",
+   "forms": [
+    "inter"
+   ],
+   "gloss": "間に"
+  },
+  {
+   "id": "intro",
+   "kind": "prefix",
+   "forms": [
+    "intro"
+   ],
+   "gloss": "内へ"
+  },
+  {
+   "id": "main",
+   "kind": "prefix",
+   "forms": [
+    "main"
+   ],
+   "gloss": "手（manu）"
+  },
+  {
+   "id": "under",
+   "kind": "prefix",
+   "forms": [
+    "under"
+   ],
+   "gloss": "下に"
+  },
+  {
+   "id": "tract",
+   "kind": "root",
+   "forms": [
+    "tract"
+   ],
+   "gloss": "引く"
+  },
+  {
+   "id": "spect",
+   "kind": "root",
+   "forms": [
+    "spect",
+    "pect"
+   ],
+   "gloss": "見る"
+  },
+  {
+   "id": "pose",
+   "kind": "root",
+   "forms": [
+    "pose"
+   ],
+   "gloss": "置く"
+  },
+  {
+   "id": "press",
+   "kind": "root",
+   "forms": [
+    "press"
+   ],
+   "gloss": "押す"
+  },
+  {
+   "id": "clude",
+   "kind": "root",
+   "forms": [
+    "clude"
+   ],
+   "gloss": "閉じる"
+  },
+  {
+   "id": "tend",
+   "kind": "root",
+   "forms": [
+    "tend"
+   ],
+   "gloss": "張る・伸ばす"
+  },
+  {
+   "id": "pand",
+   "kind": "root",
+   "forms": [
+    "pand"
+   ],
+   "gloss": "広げる"
+  },
+  {
+   "id": "plore",
+   "kind": "root",
+   "forms": [
+    "plore"
+   ],
+   "gloss": "叫ぶ→探し求める"
+  },
+  {
+   "id": "plode",
+   "kind": "root",
+   "forms": [
+    "plode"
+   ],
+   "gloss": "打ち鳴らす"
+  },
+  {
+   "id": "plain",
+   "kind": "root",
+   "forms": [
+    "plain"
+   ],
+   "gloss": "平ら／打つ"
+  },
+  {
+   "id": "sist",
+   "kind": "root",
+   "forms": [
+    "sist",
+    "ist"
+   ],
+   "gloss": "立つ"
+  },
+  {
+   "id": "ceed",
+   "kind": "root",
+   "forms": [
+    "ceed"
+   ],
+   "gloss": "行く"
+  },
+  {
+   "id": "spire",
+   "kind": "root",
+   "forms": [
+    "spire",
+    "pire"
+   ],
+   "gloss": "息をする"
+  },
+  {
+   "id": "port",
+   "kind": "root",
+   "forms": [
+    "port"
+   ],
+   "gloss": "運ぶ"
+  },
+  {
+   "id": "mit",
+   "kind": "root",
+   "forms": [
+    "mit"
+   ],
+   "gloss": "送る"
+  },
+  {
+   "id": "volve",
+   "kind": "root",
+   "forms": [
+    "volve"
+   ],
+   "gloss": "回す"
+  },
+  {
+   "id": "rupt",
+   "kind": "root",
+   "forms": [
+    "rupt"
+   ],
+   "gloss": "破る"
+  },
+  {
+   "id": "tain",
+   "kind": "root",
+   "forms": [
+    "tain"
+   ],
+   "gloss": "保つ"
+  },
+  {
+   "id": "struct",
+   "kind": "root",
+   "forms": [
+    "struct"
+   ],
+   "gloss": "築く"
+  },
+  {
+   "id": "vert",
+   "kind": "root",
+   "forms": [
+    "vert"
+   ],
+   "gloss": "回す"
+  },
+  {
+   "id": "duct",
+   "kind": "root",
+   "forms": [
+    "duct",
+    "duce"
+   ],
+   "gloss": "導く"
+  },
+  {
+   "id": "sume",
+   "kind": "root",
+   "forms": [
+    "sume"
+   ],
+   "gloss": "取る"
+  },
+  {
+   "id": "tribute",
+   "kind": "root",
+   "forms": [
+    "tribute"
+   ],
+   "gloss": "与える"
+  },
+  {
+   "id": "form",
+   "kind": "root",
+   "forms": [
+    "form"
+   ],
+   "gloss": "形づくる"
+  },
+  {
+   "id": "serve",
+   "kind": "root",
+   "forms": [
+    "serve"
+   ],
+   "gloss": "守る・仕える"
+  },
+  {
+   "id": "nect",
+   "kind": "root",
+   "forms": [
+    "nect"
+   ],
+   "gloss": "結ぶ"
+  },
+  {
+   "id": "pare",
+   "kind": "root",
+   "forms": [
+    "pare"
+   ],
+   "gloss": "整える"
+  },
+  {
+   "id": "spond",
+   "kind": "root",
+   "forms": [
+    "spond"
+   ],
+   "gloss": "誓う・応える"
+  },
+  {
+   "id": "ject",
+   "kind": "root",
+   "forms": [
+    "ject"
+   ],
+   "gloss": "投げる"
+  },
+  {
+   "id": "vent",
+   "kind": "root",
+   "forms": [
+    "vent"
+   ],
+   "gloss": "来る"
+  },
+  {
+   "id": "quire",
+   "kind": "root",
+   "forms": [
+    "quire"
+   ],
+   "gloss": "求める"
+  },
+  {
+   "id": "prove",
+   "kind": "root",
+   "forms": [
+    "prove"
+   ],
+   "gloss": "試す・証明する"
+  },
+  {
+   "id": "ceive",
+   "kind": "root",
+   "forms": [
+    "ceive"
+   ],
+   "gloss": "取る"
+  },
+  {
+   "id": "fer",
+   "kind": "root",
+   "forms": [
+    "fer"
+   ],
+   "gloss": "運ぶ"
+  },
+  {
+   "id": "solve",
+   "kind": "root",
+   "forms": [
+    "solve"
+   ],
+   "gloss": "解く"
+  },
+  {
+   "id": "vive",
+   "kind": "root",
+   "forms": [
+    "vive"
+   ],
+   "gloss": "生きる"
+  },
+  {
+   "id": "move",
+   "kind": "root",
+   "forms": [
+    "move"
+   ],
+   "gloss": "動かす"
+  },
+  {
+   "id": "scribe",
+   "kind": "root",
+   "forms": [
+    "scribe"
+   ],
+   "gloss": "書く"
+  },
+  {
+   "id": "tach",
+   "kind": "root",
+   "forms": [
+    "tach"
+   ],
+   "gloss": "留める"
+  },
+  {
+   "id": "gest",
+   "kind": "root",
+   "forms": [
+    "gest"
+   ],
+   "gloss": "運ぶ"
+  },
+  {
+   "id": "nounce",
+   "kind": "root",
+   "forms": [
+    "nounce"
+   ],
+   "gloss": "告げる"
+  },
+  {
+   "id": "tect",
+   "kind": "root",
+   "forms": [
+    "tect"
+   ],
+   "gloss": "覆う"
+  },
+  {
+   "id": "tempt",
+   "kind": "root",
+   "forms": [
+    "tempt"
+   ],
+   "gloss": "試みる"
+  },
+  {
+   "id": "stand",
+   "kind": "root",
+   "forms": [
+    "stand"
+   ],
+   "gloss": "立つ"
+  }
+ ]
+}
