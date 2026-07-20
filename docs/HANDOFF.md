@@ -1,5 +1,18 @@
 # HANDOFF — プランS: Vite+Reactトライビュー
 
+## 現状（S-2で追加したもの）
+
+Issue #4（S-2）対応：spec §5.2の未実装3点を修正。
+
+- `src/views/layout.js`：focus=ε（語頭）専用の縦一列レイアウトを追加（文字盤の扇とは別分岐）。
+- `src/views/TrieView.jsx`：
+  - 語頭のとき、キャンバスをネイティブスクロール（overflowY:auto）に切替。
+  - トレイルの文字が `r<7` で消えていた不具合を修正。全ノードでフォントサイズ下限10pxを保証。
+  - 決まり字の尾（KimarijiTail）に直書きされていた単語・意味を削除（下部シートに一本化、spec §7-10）。
+- `src/App.jsx`：TrieViewへの不要になった `entryMap` propを削除。
+
+core/ と data/ には一切手を加えていない。詳細はdocs/02-decisions.mdのS-2エントリを参照。
+
 ## 現状（このPRで作ったもの）
 
 - Vite + React の骨組み一式（`package.json` / `vite.config.js` / `index.html` / `src/main.jsx`）。

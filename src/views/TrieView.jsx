@@ -15,7 +15,6 @@ export default function TrieView({
   focusAtoms,
   rot,
   atomCompare,
-  entryMap,
   reduced,
   onFocusChange,
   onRotChange,
@@ -23,6 +22,7 @@ export default function TrieView({
 }) {
   const canvasRef = useRef(null);
   const [dims, setDims] = useState({ w: 390, h: 560 });
+  const isColumn = focusAtoms.length === 0; // 語頭＝縦一列（spec §5.2・§7-4）
 
   useEffect(() => {
     const el = canvasRef.current;
@@ -37,8 +37,9 @@ export default function TrieView({
     [root, focusAtoms, rot, dims, atomCompare, atomsByWord]
   );
   const { states, wobble } = useSprings(layout, reduced);
-  const { T, fanMeta } = layout;
+  const { T, fanMeta, columnHeight } = layout;
   const focusKey = pathKey(focusAtoms);
+  const svgHeight = isColumn ? Math.max(dims.h, columnHeight || 0) : "100%";
 
   // ---------- interactions ----------
   const tapNode = (id, t) => {
@@ -86,11 +87,18 @@ export default function TrieView({
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
-      style={{ position: "relative", flex: 1, minHeight: 0, touchAction: "none", overflow: "hidden" }}
+      style={{
+        position: "relative",
+        flex: 1,
+        minHeight: 0,
+        touchAction: isColumn ? "pan-y" : "none",
+        overflowY: isColumn ? "auto" : "hidden",
+        overflowX: "hidden",
+      }}
     >
-      <svg width="100%" height="100%" style={{ display: "block" }}>
-        {/* edges */}
-        {items.map(([id, t]) => {
+      <svg width="100%" height={svgHeight} style={{ display: "block" }}>
+        {/* edges（縦一列モードでは全て根から出て重なるだけなので描かない） */}
+        {!isColumn && items.map(([id, t]) => {
           if (t.atoms.length === 0) return null;
           const pid = pathKey(t.atoms.slice(0, -1));
           const ps = states.current.get(pid);
@@ -144,14 +152,16 @@ export default function TrieView({
                 strokeWidth={isFocus ? 2.4 : isGhost ? 1 : 1.3}
                 strokeDasharray={isGhost ? "2.5 2.5" : "none"}
               />
-              {r >= 7 && t.atom && (
+              {t.atom && (
+                // 文字サイズ下限10px（spec §5.2 P1）：奥のトレイルで円が点になっても文字は読める。
+                // 円からはみ出してよい。
                 <text
                   x={s.x}
                   y={s.y + r * 0.36}
                   textAnchor="middle"
                   style={{
                     fontFamily: "Avenir Next,'Hiragino Kaku Gothic ProN',sans-serif",
-                    fontSize: Math.max(9, r * 0.95),
+                    fontSize: Math.max(10, r * 0.95),
                     fontWeight: isFocus || isKim ? 600 : 500,
                     fill: isKim ? "#fff" : isFocus ? C.roseDeep : isGhost ? C.ghost : C.ink,
                     pointerEvents: "none",
@@ -172,7 +182,7 @@ export default function TrieView({
                 </text>
               )}
               {isKim && t.restAtoms != null && (
-                <KimarijiTail x={s.x} y={s.y} r={r} restAtoms={t.restAtoms} word={t.only} entryMap={entryMap} />
+                <KimarijiTail x={s.x} y={s.y} r={r} restAtoms={t.restAtoms} />
               )}
             </g>
           );
@@ -223,10 +233,9 @@ export default function TrieView({
   );
 }
 
-// 決まり字の子：残りのゴースト連鎖＋語＋意味（spec §5.2「尾は小さなゴースト文字連鎖のみ」）
-function KimarijiTail({ x, y, r, restAtoms, word, entryMap }) {
+// 決まり字の子：残りのゴースト文字連鎖のみ（spec §5.2・§7-10「終端に単語テキストは置かない、語は下部シートで」）
+function KimarijiTail({ x, y, r, restAtoms }) {
   const shown = restAtoms.slice(0, 6);
-  const tailX = x + r + 20 + shown.length * 22 + 8;
   return (
     <g pointerEvents="none">
       {shown.map((a, i) => (
@@ -246,12 +255,6 @@ function KimarijiTail({ x, y, r, restAtoms, word, entryMap }) {
           </text>
         </g>
       ))}
-      <text x={tailX} y={y - 2} style={{ fontFamily: "Avenir Next,sans-serif", fontSize: 13.5, fontWeight: 600, fill: C.ink }}>
-        {word}
-      </text>
-      <text x={tailX} y={y + 12} style={{ fontSize: 9.5, fill: C.ghost }}>
-        {entryMap.get(word)?.g || ""}
-      </text>
     </g>
   );
 }

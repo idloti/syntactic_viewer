@@ -102,7 +102,7 @@ export default function App() {
       <div style={{ padding: "0 16px 6px", fontSize: 10.5, color: C.ghost }}>
         接頭：
         <span style={{ color: C.roseDeep, fontWeight: 700, fontFamily: "Avenir Next,sans-serif" }}>{focusLabel}</span>
-        ・頻度1位が1時の位置・塗り＝決まり字
+        ・{state.focus.length === 0 ? "頻度順に縦一列" : "頻度1位が1時の位置"}・塗り＝決まり字
       </div>
 
       <TrieView
@@ -111,7 +111,6 @@ export default function App() {
         focusAtoms={state.focus}
         rot={state.rot}
         atomCompare={atomCompare}
-        entryMap={entryMap}
         reduced={reduced}
         onFocusChange={(atoms) => dispatch({ type: "FOCUS_SET", atoms })}
         onRotChange={(rot) => dispatch({ type: "ROT_SET", rot })}
