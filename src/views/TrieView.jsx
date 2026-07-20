@@ -1,4 +1,4 @@
-// src/views/TrieView.jsx — トライビュー本体（文字盤・魚眼トレイル・バネ・決まり字）。
+// src/views/TrieView.jsx — トライビュー本体（文字盤・横一直線トレイル・バネ・決まり字）。
 // Stateを読むだけ。書き込みは props で渡されたコールバック（Msg発行）経由のみ（CQRS）。
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -7,7 +7,7 @@ import { computeTargets, FE } from "./layout.js";
 import { useSprings } from "./springs.js";
 import { C, fanBtn } from "./theme.js";
 
-const DRAW_ORDER = { ghost: 0, trail: 1, child: 2, kimariji: 2, focus: 3 };
+const DRAW_ORDER = { trail: 1, child: 2, kimariji: 2, focus: 3 };
 
 export default function TrieView({
   root,
@@ -37,9 +37,18 @@ export default function TrieView({
     [root, focusAtoms, rot, dims, atomCompare, atomsByWord]
   );
   const { states, wobble } = useSprings(layout, reduced);
-  const { T, fanMeta, columnHeight } = layout;
+  const { T, fanMeta, columnHeight, contentWidth } = layout;
   const focusKey = pathKey(focusAtoms);
   const svgHeight = isColumn ? Math.max(dims.h, columnHeight || 0) : "100%";
+  const svgWidth = isColumn ? "100%" : Math.max(dims.w, contentWidth || 0);
+  const overflowsRight = !isColumn && contentWidth > dims.w;
+
+  // 焦点は右寄り固定（S-3）：焦点が動くたびに横スクロールを右端（＝焦点側）へ追従させる。
+  useEffect(() => {
+    const el = canvasRef.current;
+    if (!el || isColumn) return;
+    el.scrollLeft = Math.max(0, (contentWidth || 0) - dims.w);
+  }, [isColumn, contentWidth, dims.w, focusKey]);
 
   // ---------- interactions ----------
   const tapNode = (id, t) => {
@@ -91,12 +100,12 @@ export default function TrieView({
         position: "relative",
         flex: 1,
         minHeight: 0,
-        touchAction: isColumn ? "pan-y" : "none",
+        touchAction: isColumn ? "pan-y" : "pan-x",
         overflowY: isColumn ? "auto" : "hidden",
-        overflowX: "hidden",
+        overflowX: isColumn ? "hidden" : "auto",
       }}
     >
-      <svg width="100%" height={svgHeight} style={{ display: "block" }}>
+      <svg width={svgWidth} height={svgHeight} style={{ display: "block" }}>
         {/* edges（縦一列モードでは全て根から出て重なるだけなので描かない） */}
         {!isColumn && items.map(([id, t]) => {
           if (t.atoms.length === 0) return null;
@@ -104,7 +113,6 @@ export default function TrieView({
           const ps = states.current.get(pid);
           const s = states.current.get(id);
           if (!ps || !s) return null;
-          const isGhost = t.kind === "ghost";
           return (
             <line
               key={"e" + id}
@@ -112,10 +120,8 @@ export default function TrieView({
               y1={ps.y}
               x2={s.x}
               y2={s.y}
-              stroke={isGhost ? C.lineSoft : t.kind === "kimariji" ? C.rose : C.line}
-              strokeWidth={isGhost ? 1 : 1.3}
-              strokeDasharray={isGhost ? "3 3" : "none"}
-              opacity={isGhost ? 0.8 : 1}
+              stroke={t.kind === "kimariji" ? C.rose : C.line}
+              strokeWidth={1.3}
             />
           );
         })}
@@ -127,9 +133,8 @@ export default function TrieView({
           const r = Math.max(0.1, s.r);
           const isFocus = t.kind === "focus";
           const isKim = t.kind === "kimariji";
-          const isGhost = t.kind === "ghost";
           const fill = isKim ? C.rose : "#fff";
-          const stroke = isFocus ? C.roseDeep : isGhost ? C.ghost : isKim ? "none" : C.inkSoft;
+          const stroke = isFocus ? C.roseDeep : isKim ? "none" : C.inkSoft;
           return (
             <g
               key={id}
@@ -149,8 +154,7 @@ export default function TrieView({
                 r={r}
                 fill={fill}
                 stroke={stroke}
-                strokeWidth={isFocus ? 2.4 : isGhost ? 1 : 1.3}
-                strokeDasharray={isGhost ? "2.5 2.5" : "none"}
+                strokeWidth={isFocus ? 2.4 : 1.3}
               />
               {t.atom && (
                 // 文字サイズ下限10px（spec §5.2 P1）：奥のトレイルで円が点になっても文字は読める。
@@ -163,7 +167,7 @@ export default function TrieView({
                     fontFamily: "Avenir Next,'Hiragino Kaku Gothic ProN',sans-serif",
                     fontSize: Math.max(10, r * 0.95),
                     fontWeight: isFocus || isKim ? 600 : 500,
-                    fill: isKim ? "#fff" : isFocus ? C.roseDeep : isGhost ? C.ghost : C.ink,
+                    fill: isKim ? "#fff" : isFocus ? C.roseDeep : C.ink,
                     pointerEvents: "none",
                   }}
                 >
@@ -188,6 +192,21 @@ export default function TrieView({
           );
         })}
       </svg>
+
+      {overflowsRight && (
+        // 溢れた古い側（左）のフェード（S-3：横スクロールで巻き戻れることを示すヴィネット）
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: 28,
+            background: `linear-gradient(to right, ${C.paper}, rgba(252,251,249,0))`,
+            pointerEvents: "none",
+          }}
+        />
+      )}
 
       {fanMeta && (
         <div

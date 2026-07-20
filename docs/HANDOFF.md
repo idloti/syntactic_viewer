@@ -1,5 +1,28 @@
 # HANDOFF — プランS: Vite+Reactトライビュー
 
+## 現状（S-3で変更したもの）
+
+Issue #6（S-3）対応：決定記録§7-3の撤回（トレイル魚眼の廃止）＋下部シート常時表示。
+
+- `src/views/layout.js`：深さ≥1のトレイル（祖先ノード）計算から魚眼スケール（S_TRAIL）・
+  GAPによる折れオフセット・姉妹ゴーストを削除。等サイズ（TRAIL_R=15固定）・等間隔（STEP=88固定）の
+  横一直線に変更。焦点x座標は深さに比例して右へ伸びる形にし（`ax = 基準 + STEP*depth`）、
+  横スクロールで追従させることで「焦点は右寄り固定」を実現。`contentWidth`を新規に返す。
+- `src/views/TrieView.jsx`：
+  - キャンバスのoverflowXをautoにし、layout変化のたびscrollLeftを右端（contentWidth-viewport幅）へ
+    スナップ。左端に紙色→透明のグラデーションを重ねて「古い側フェード」の見た目を追加。
+  - タッチ操作はtouchAction:pan-xにし、横スワイプはネイティブスクロール・縦ドラッグは従来通り
+    盤の回転（onRotChange）に使う。
+  - 廃止した「ghost」kind（姉妹ゴースト）に依存していた描画分岐を削除。
+- `src/views/DetailSheet.jsx`：word未選択時（決まり字未タップ時）でも常時マウントされ、
+  焦点までの綴り（濃）＋続きを示す薄い「…」を表示するよう分岐を追加。語選択後は従来通り
+  語＋gloss＋n字決まりバッジ。
+- `src/App.jsx`：DetailSheetを`state.selection`の有無で条件レンダリングせず常時マウント。
+  ヘッダー下にあった「接頭：」表示は下部シートと重複するため削除。
+- `docs/spec-v1.md` §5.2・`docs/handoff-log.md` §2-3を新方針に更新。
+
+core/ と data/ には一切手を加えていない。詳細はdocs/02-decisions.mdのS-3エントリを参照。
+
 ## 現状（S-2で追加したもの）
 
 Issue #4（S-2）対応：spec §5.2の未実装3点を修正。
@@ -39,16 +62,14 @@ core/ と data/ には一切手を加えていない。
    `docs/deploy-pages.yml` の中身を `.github/workflows/deploy-pages.yml` として
    発注者側でコピーし、Settings → Pages → Source を「GitHub Actions」にしてください。
    それまでは公開URLが存在しません。
-2. **ビルド未検証** — このセッションのBash権限では `npm install` / `npm run build` /
-   `node core/selftest.js ./data` が承認待ちで実行できませんでした
-   （`git status` や `node --version` など読み取り専用コマンドのみ許可）。
-   コードは目視で作り込みましたが、実機・ブラウザでの動作確認ができていません。
-   お手数ですが手元で次を実行して確認してください：
+2. **S-3セッションで確認できたこと／できなかったこと** — 今回は `npm install` /
+   `npm run build` / `node core/selftest.js ./data` は実行でき、いずれも成功
+   （selftest ALL GREEN 28本、buildは`release/`に単一HTML書き出し成功）。
+   ただしブラウザを開いての実機確認（スマホ幅での横スクロールの触感、右寄り固定の見え方、
+   左端フェードの見栄え）はこのセッションの環境では行えていません。お手数ですが
+   `npm run dev` を開いて、深い階層まで辿ったときのトレイルの挙動を見てください：
    ```
-   node core/selftest.js ./data   # 変更なし。ALL GREENのはず
-   npm install
    npm run dev                    # http://localhost:5173 で確認
-   npm run build                  # release/ に単一HTMLが出る
    ```
 3. **core/layout.jsへの追加要望** — `src/views/layout.js` の`computeTargets`は
    数学的には純関数でReact/DOMに依存しないため、spec §4.1の設計どおりなら
@@ -60,6 +81,6 @@ core/ と data/ には一切手を加えていない。
 ## 次の一手
 
 - 発注者に `docs/deploy-pages.yml` を `.github/workflows/` へ移してもらい、Pages配備を確認。
-- 実機（スマホ390px）でバネの触感・盤の回転方向・トレイルの見え方を確認してもらい、
-  §8未決事項（回転符号・バネ定数・魚眼比）を触感で調整。
-- ALL GREENの再確認（このセッションでは未実施）。
+- 実機（スマホ390px）で新トレイル（等サイズ・横一直線・横スクロール・右寄り固定）の触感、
+  下部シートの常時表示を確認してもらい、TRAIL_R・STEP・RIGHT_PADの値を触感で調整。
+- 語頭の縦一列（§7-4）は今回のS-3スコープ外のまま。

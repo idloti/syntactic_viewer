@@ -73,8 +73,6 @@ export default function App() {
     );
   }
 
-  const focusLabel = state.focus.length ? state.focus.join("") : "（語頭）";
-
   return (
     <div
       style={{
@@ -100,9 +98,7 @@ export default function App() {
         </button>
       </header>
       <div style={{ padding: "0 16px 6px", fontSize: 10.5, color: C.ghost }}>
-        接頭：
-        <span style={{ color: C.roseDeep, fontWeight: 700, fontFamily: "Avenir Next,sans-serif" }}>{focusLabel}</span>
-        ・{state.focus.length === 0 ? "頻度順に縦一列" : "頻度1位が1時の位置"}・塗り＝決まり字
+        {state.focus.length === 0 ? "頻度順に縦一列" : "頻度1位が1時の位置"}・塗り＝決まり字
       </div>
 
       <TrieView
@@ -117,15 +113,14 @@ export default function App() {
         onSelect={(word) => dispatch({ type: "SELECT_SET", word })}
       />
 
-      {state.selection && (
-        <DetailSheet
-          word={state.selection}
-          root={trie.root}
-          atomsByWord={trie.atomsByWord}
-          entryMap={entryMap}
-          onClose={() => dispatch({ type: "SELECT_SET", word: null })}
-        />
-      )}
+      <DetailSheet
+        word={state.selection}
+        root={trie.root}
+        atomsByWord={trie.atomsByWord}
+        entryMap={entryMap}
+        focusAtoms={state.focus}
+        onClose={() => dispatch({ type: "SELECT_SET", word: null })}
+      />
 
       {state.editorOpen && (
         <VocabEditor

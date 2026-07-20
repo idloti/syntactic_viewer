@@ -11,11 +11,11 @@
 import { nodeAt, sortedKids, pathKey } from "../../core/trie.js";
 
 export const FE = {
-  S_TRAIL: 0.6,
   STEP: 88,
-  GAP: 62,
   R_FAN: 118,
   FOCUS_R: 19,
+  TRAIL_R: 15, // トレイル（辿った道）は等サイズ・焦点より一回り小さい固定値（S-3）
+  RIGHT_PAD: 170, // 焦点から扇（R_FAN）とその回転ボタン分の余白
   DTH: 25,
   START: -50,
   VISIBLE: 63,
@@ -37,16 +37,17 @@ export function baseRadius(count) {
  * @param {{w:number,h:number}} dims
  * @param {(a:string,b:string)=>number} atomCompare
  * @param {Map<string,string[]>} atomsByWord kimariji子の残り原子表示に使う
- * @returns {{T: Map<string, object>, fanMeta: {above:number, below:number, rotMin:number, rotMax:number}|null, columnHeight: number|null}}
+ * @returns {{T: Map<string, object>, fanMeta: {above:number, below:number, rotMin:number, rotMax:number}|null, columnHeight: number|null, contentWidth: number|null}}
  *   columnHeight: 語頭（縦一列）モードのときだけ非null。スクロール領域の高さの目安。
+ *   contentWidth: 深さ≥1（トレイル＋扇）モードのときだけ非null。横スクロール領域の幅の目安。
  */
 export function computeTargets(root, focusAtoms, rot, dims, atomCompare, atomsByWord) {
   const T = new Map();
   const put = (atoms, t) => T.set(pathKey(atoms), t);
-  const { S_TRAIL, STEP, GAP, R_FAN, FOCUS_R, DTH, START, VISIBLE, COL_X, COL_TOP, COL_ROW } = FE;
+  const { STEP, R_FAN, FOCUS_R, TRAIL_R, RIGHT_PAD, DTH, START, VISIBLE, COL_X, COL_TOP, COL_ROW } = FE;
 
   const focusNode = nodeAt(root, focusAtoms);
-  if (!focusNode) return { T, fanMeta: null, columnHeight: null };
+  if (!focusNode) return { T, fanMeta: null, columnHeight: null, contentWidth: null };
 
   // --- 語頭（focus=ε）：文字盤ではなく縦一列、頻度順に上から（spec §5.2・§7-4）---
   if (focusAtoms.length === 0) {
@@ -80,11 +81,13 @@ export function computeTargets(root, focusAtoms, rot, dims, atomCompare, atomsBy
     });
 
     const columnHeight = COL_TOP + Math.max(0, kids.length - 1) * COL_ROW + 60;
-    return { T, fanMeta: null, columnHeight };
+    return { T, fanMeta: null, columnHeight, contentWidth: null };
   }
 
-  const ax = Math.min(dims.w * 0.34, 150);
+  // 焦点位置は右寄り固定（S-3）：深さが増えるほど右へ進み、横スクロールで追従する。
+  const ax = Math.min(dims.w * 0.34, 150) + STEP * focusAtoms.length;
   const ay = dims.h * 0.44;
+  const contentWidth = ax + RIGHT_PAD;
 
   put(focusAtoms, {
     atoms: focusAtoms,
@@ -97,51 +100,22 @@ export function computeTargets(root, focusAtoms, rot, dims, atomCompare, atomsBy
     alpha: 1,
   });
 
-  // --- 祖先トレイル（等比0.6：総幅 ≤ STEP·1.5 で必ず収まる）---
-  let x = ax,
-    y = ay;
+  // --- 祖先トレイル：等サイズ・等間隔の横一直線（S-3。魚眼・折れは廃止） ---
   for (let k = 1; k <= focusAtoms.length; k++) {
     const pAtoms = focusAtoms.slice(0, focusAtoms.length - k);
     const parent = nodeAt(root, pAtoms);
-    const takenAtom = focusAtoms[focusAtoms.length - k];
-    const kids = sortedKids(parent, atomCompare);
-    const m = kids.length;
-    const rank = kids.findIndex(([a]) => a === takenAtom);
-    const sc = Math.pow(S_TRAIL, k);
-    const off = (rank - (m - 1) / 2) * GAP * sc;
-    const px = x - STEP * sc;
-    const py = y - off;
+    const px = ax - STEP * k;
 
     put(pAtoms, {
       atoms: pAtoms,
       x: px,
-      y: py,
-      r: Math.max(3.5, (pAtoms.length === 0 ? 11 : FOCUS_R) * sc),
+      y: ay,
+      r: TRAIL_R,
       kind: "trail",
       atom: parent.atom,
       count: parent.count,
       alpha: 1,
     });
-
-    kids.forEach(([a, child], rk) => {
-      if (a === takenAtom || Math.abs(rk - rank) > 3) return;
-      const sAtoms = [...pAtoms, a];
-      const key = pathKey(sAtoms);
-      if (T.has(key)) return;
-      put(sAtoms, {
-        atoms: sAtoms,
-        x: px + STEP * sc * 0.3,
-        y: py + (rk - (m - 1) / 2) * GAP * sc,
-        r: Math.max(2.5, baseRadius(child.count) * sc * 0.4),
-        kind: "ghost",
-        atom: a,
-        count: child.count,
-        alpha: 0.9,
-      });
-    });
-
-    x = px;
-    y = py;
   }
 
   // --- 扇（文字盤）：θ_i = START + i・DTH + rot ---
@@ -183,5 +157,5 @@ export function computeTargets(root, focusAtoms, rot, dims, atomCompare, atomsBy
   const fanMeta =
     above + below > 0 || rotMin < 0 ? { above, below, rotMin, rotMax: 0 } : null;
 
-  return { T, fanMeta, columnHeight: null };
+  return { T, fanMeta, columnHeight: null, contentWidth };
 }

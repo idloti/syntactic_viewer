@@ -1,10 +1,34 @@
-// src/views/DetailSheet.jsx — 選択語の下部シート（spec §5.2「語は下部シートで」）。
+// src/views/DetailSheet.jsx — 現在の綴りの下部シート（spec §5.2「語は下部シートで」）。
+// 常時表示：word未選択のときは焦点までの綴り（辿った字＝濃・続きは薄）、
+// 決まり字選択後は語＋gloss＋n字決まり（S-3）。
 
 import React from "react";
 import { kimarijiDepth } from "../../core/kimariji.js";
 import { C, hbtn } from "./theme.js";
 
-export default function DetailSheet({ word, root, atomsByWord, entryMap, onClose }) {
+export default function DetailSheet({ word, root, atomsByWord, entryMap, focusAtoms, onClose }) {
+  if (!word) {
+    return (
+      <div
+        style={{
+          background: C.sheet,
+          borderTop: `3px solid ${C.lineSoft}`,
+          padding: "12px 16px 14px",
+          boxShadow: "0 -4px 16px rgba(0,0,0,0.05)",
+        }}
+      >
+        <span style={{ fontFamily: "Avenir Next,sans-serif", fontSize: 24, fontWeight: 600 }}>
+          {focusAtoms.length === 0 ? (
+            <span style={{ color: C.ghost }}>（語頭）</span>
+          ) : (
+            focusAtoms.map((a, i) => <span key={i} style={{ color: C.ink }}>{a}</span>)
+          )}
+          <span style={{ color: C.ghost }}>…</span>
+        </span>
+      </div>
+    );
+  }
+
   const atoms = atomsByWord.get(word) || [];
   const depth = kimarijiDepth(root, atoms); // null = 詠み切り札（spec §9-A1）
   const entry = entryMap.get(word);
